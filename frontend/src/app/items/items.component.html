@@ -1,0 +1,202 @@
+<div class="container">
+    <h2>{{ isEditMode ? 'Edit' : 'Create' }} Employee</h2>
+    <form (ngSubmit)="editOrUpdateItem()" class="mb-4">
+      <div class="form-group">
+        <label for="Employee_ID">Employee ID</label>
+        <input [(ngModel)]="newItem.Employee_ID" name="Employee_ID" id="Employee_ID" placeholder="Enter Employee ID" class="form-control mb-2">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="First_Name">First Name</label>
+          <input type="text" [(ngModel)]="newItem.First_Name" name="First_Name" id="First_Name" placeholder="Enter First Name" class="form-control mb-2">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="Last_Name">Last Name</label>
+          <input type="text" [(ngModel)]="newItem.Last_Name" name="Last_Name" id="Last_Name" placeholder="Enter Last Name" class="form-control mb-2">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="Email">Email</label>
+          <input type="text" [(ngModel)]="newItem.Email" name="Email" id="Email" placeholder="Enter Email" class="form-control mb-2">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="Phone_Number">Phone Number</label>
+          <input type="text" [(ngModel)]="newItem.Phone_Number" name="Phone_Number" id="Phone_Number" placeholder="Enter Phone Number" class="form-control mb-2">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="Date_of_Birth">Date of Birth</label>
+          <input type="date" [(ngModel)]="newItem.Date_of_Birth" name="Date_of_Birth" id="Date_of_Birth" class="form-control mb-2">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="Address">Address</label>
+          <input type="text" [(ngModel)]="newItem.Address" name="Address" id="Address" placeholder="Enter Address" class="form-control mb-2">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="Department">Department</label>
+          <input type="text" [(ngModel)]="newItem.Department" name="Department" id="Department" placeholder="Enter Department" class="form-control mb-2">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="Position_Job_Title">Position/Job Title</label>
+          <input type="text" [(ngModel)]="newItem.Position_Job_Title" name="Position_Job_Title" id="Position_Job_Title" placeholder="Enter Position/Job Title" class="form-control mb-2">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="Date_Hired">Date Hired</label>
+          <input type="date" [(ngModel)]="newItem.Date_Hired" name="Date_Hired" id="Date_Hired" class="form-control mb-2">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="Salary">Salary</label>
+          <input type="text" [(ngModel)]="newItem.Salary" name="Salary" id="Salary" placeholder="Enter Salary" class="form-control mb-2">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success">{{ isEditMode ? 'Update' : 'Create' }}</button>
+      <button *ngIf="isEditMode" (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
+    </form>
+
+
+
+    <div class="container">
+        <h2>Employee List</h2>
+        <div class="row">
+            <div class="col">
+                <div class="table-container">
+                    <table class="table table-bordered">
+                        <!-- Table Header -->
+                        <thead>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Date of Birth</th>
+                                <th>Address</th>
+                                <th>Department</th>
+                                <th>Position/Job Title</th>
+                                <th>Date Hired</th>
+                                <th>Salary</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <!-- Table Body -->
+                        <tbody>
+                            <!-- Rows for each employee -->
+                            <tr *ngFor="let item of items">
+                                <td data-label="Employee ID">{{ item.Employee_ID }}</td>
+                                <td data-label="First Name">{{ item.First_Name }}</td>
+                                <td data-label="Last Name">{{ item.Last_Name }}</td>
+                                <td data-label="Email">{{ item.Email }}</td>
+                                <td data-label="Phone Number">{{ item.Phone_Number }}</td>
+                                <td data-label="Date of Birth">{{ item.Date_of_Birth }}</td>
+                                <td data-label="Address">{{ item.Address }}</td>
+                                <td data-label="Department">{{ item.Department }}</td>
+                                <td data-label="Position/Job Title">{{ item.Position_Job_Title }}</td>
+                                <td data-label="Date Hired">{{ item.Date_Hired }}</td>
+                                <td data-label="Salary">{{ item.Salary }}</td>
+                                <!-- Actions column with Edit and Delete buttons -->
+                                <td data-label="Actions">
+                                    <button (click)="deleteItem(item._id)" class="btn btn-danger btn-sm float-left mb-2">Delete</button>
+                                    <button (click)="editItem(item)" class="btn btn-primary btn-sm float-left ml-2">Edit</button>
+                                    <div class="clearfix"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+  </div>
+
+
+
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="container">
+  <h2>{{ isEditMode ? 'Edit' : 'Create' }} Item</h2>
+  <form (ngSubmit)="editOrUpdateItem()" class="mb-4">
+    <input [(ngModel)]="newItem.Employee_ID" name="Employee_ID" placeholder="Employee_ID" class="form-control mb-2">
+    <input type="text" [(ngModel)]="newItem.First_Name" name="First_Name" placeholder="First_Name" class="form-control mb-2">
+    <input type="text" [(ngModel)]="newItem.Last_Name" name="Last_Name" placeholder="Last_Name" class="form-control mb-2">
+    <input type="text" [(ngModel)]="newItem.Email" name="Email" placeholder="Email" class="form-control mb-2">
+    <input type="text" [(ngModel)]="newItem.Phone_Number" name=" Phone_Number" placeholder=" Phone_Number" class="form-control mb-2">
+    <input type="date" [(ngModel)]="newItem.Date_of_Birth" name=" Date_of_Birth" placeholder=" Date_of_Birth" class="form-control mb-2">
+    <input type="text" [(ngModel)]="newItem.Address" name="Address" placeholder="Address" class="form-control mb-2">
+    <input type="text" [(ngModel)]="newItem.Department" name=" Department" placeholder=" Department" class="form-control mb-2">
+    <input type="text" [(ngModel)]="newItem.Position_Job_Title" name=" Position_Job_Title" placeholder="Position_Job_Title" class="form-control mb-2">
+    <input type="date" [(ngModel)]="newItem.Date_Hired" name="Date_Hired" placeholder="Date_Hired" class="form-control mb-2">
+    <input type="text" [(ngModel)]="newItem.Salary" name="Salary" placeholder="Salary" class="form-control mb-2">
+    <button type="submit" class="btn btn-success">{{ isEditMode ? 'Update' : 'Create' }}</button>
+    <button *ngIf="isEditMode" (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
+  </form>
+
+  <h2>Items List</h2>
+  <table class="table">
+      <thead>
+          <tr>
+              <th>Employee ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Phone Number</th>
+              <th>Date of Birth</th>
+              <th>Address</th>
+              <th>Department</th>
+              <th>Position/Job Title</th>
+              <th>Date Hired</th>
+              <th>Salary</th>
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of items">
+              <td>{{ item.Employee_ID }}</td>
+              <td>{{ item.First_Name }}</td>
+              <td>{{ item.Last_Name }}</td>
+              <td>{{ item.Email }}</td>
+              <td>{{ item.Phone_Number }}</td>
+              <td>{{ item.Date_of_Birth }}</td>
+              <td>{{ item.Address }}</td>
+              <td>{{ item.Department }}</td>
+              <td>{{ item.Position_Job_Title }}</td>
+              <td>{{ item.Date_Hired }}</td>
+              <td>{{ item.Salary }}</td>
+              <td>
+                  <button (click)="deleteItem(item._id)" class="btn btn-danger">Delete</button>
+                  <button (click)="editItem(item)" class="btn btn-primary">Edit</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div> -->
+
